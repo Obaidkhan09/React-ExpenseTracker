@@ -6,10 +6,11 @@ import { Balance } from './components/Balance'
 import { Summary } from './components/Summary'
 import { History } from './components/History'
 import { AddTransaction } from './components/AddTransacrion'
+import { globalPovider } from './context/GlobalState'
 
 function App() {
   return (
-    <div>
+    <globalPovider>
       <Header/>
       <div className = "container" >
         <Balance/>
@@ -17,7 +18,7 @@ function App() {
         <History/>
         <AddTransaction/>
       </div>
-    </div>
+    </globalPovider>
   );
 }
 

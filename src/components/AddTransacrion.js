@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const AddTransaction = () => {
+    
+    const [description, setDescription] = useState ();
+    const [addAmount, setAddAmount] = useState();
+    
     return(
         <div id = 'transaction'>
             <h3>Add New Transaction</h3>
@@ -8,13 +12,22 @@ export const AddTransaction = () => {
                 <div className = 'form-control padding-left'>
                     <label htmlFor = 'description'>
                         Description
-                        <input type = 'text' id= 'description'  placeholder = 'Add Details'  />
+                        <input type = 'text'
+                                id= 'description'
+                                placeholder = 'Add Details'
+                                value = {description}
+                                onChange = {(e) => setDescription (e.target.value)}
+                        />
                     </label>
                 </div>
                 <div className = 'form-control padding-left'>
                     <label htmlFor = 'addAmount'>
                         Add Amount
-                        <input type = 'number' id= 'addAmount'  placeholder = 'Add Amount'  />
+                        <input  type = 'number'
+                                id= 'addAmount'  placeholder = 'Add Amount' 
+                                value = {addAmount}
+                                onChange = {(e) => setAddAmount(e.target.value)}
+                        />
                     </label>
                 </div>
 
