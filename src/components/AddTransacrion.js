@@ -6,10 +6,10 @@ export const AddTransaction = () => {
     const [addAmount, setAddAmount] = useState();
     
     return(
-        <div id = 'transaction'>
+        <div >
             <h3>Add New Transaction</h3>
             <form>
-                <div className = 'form-control padding-left'>
+                <div className = 'padding-left'>
                     <label htmlFor = 'description'>
                         Description
                         <input type = 'text'
@@ -20,7 +20,7 @@ export const AddTransaction = () => {
                         />
                     </label>
                 </div>
-                <div className = 'form-control padding-left'>
+                <div className = 'padding-left'>
                     <label htmlFor = 'addAmount'>
                         Add Amount
                         <input  type = 'number'
