@@ -2,19 +2,20 @@ import './App.css'
 
 //import components
 import Starter from './components/Starter'
+import {GlobalProvider} from "./context/GlobalState"
+
 // import { Balance } from './components/Balance'
 // import { Summary } from './components/Summary'
 // import { History } from './components/History'
 // import { AddTransaction } from './components/AddTransacrion'
-//import { GlobalPovider } from './context/GlobalState'
 
 function App() {
   return (
-    <div>
+    <GlobalProvider>
       
       <Starter/>
 
-    </div>
+    </GlobalProvider>
   );
 }
 

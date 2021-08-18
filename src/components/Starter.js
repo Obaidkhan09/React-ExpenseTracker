@@ -9,7 +9,9 @@ import '../App.css'
 
 function Starter() {
 
-    let transactions = useContext(GlobalContext);
+    let {transactions} = useContext(GlobalContext);
+
+    //handlaAddition Function using in Form
 
     return (
         <div className='container'>
@@ -34,12 +36,12 @@ function Starter() {
                 </div>
             </div>
 
-
+            
             <h3>Transaction History</h3>
             <ul  className = 'list'>
                 {transactions.map((transObj, ind)=>{
                     return(
-                        <li>
+                        <li key = {ind}>
                             <span>{transObj.description}</span>
                             <span>{transObj.amount}</span>
                         </li>
@@ -57,7 +59,7 @@ function Starter() {
                         <input type = 'text'
                                 id= 'description'
                                 placeholder = 'Add Details'
-                                required='true'
+                                required
                         />
                     </label>
                 </div>
@@ -67,7 +69,7 @@ function Starter() {
                         <input  type = 'number'
                                 id= 'addAmount'
                                 placeholder = 'Add Amount'
-                                required='true'
+                                required
                         />
                     </label>
                 </div>
