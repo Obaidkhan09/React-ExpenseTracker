@@ -195,3 +195,7 @@ input[type='number'] {
    width: 100vh;
    background-color: rgba(136, 143, 143, 0.3) !important;
  }
+
+ .form-control{
+   width: 330px !important;
+ }
