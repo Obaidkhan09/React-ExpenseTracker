@@ -21,8 +21,8 @@ export const GlobalProvider = ({children})=> {
             type: "ADD",
             payload: { 
                 amount: transObj.amount, 
-                desc: transObj.description 
-            },
+                desc: transObj.desc
+            }
         })
     }
 

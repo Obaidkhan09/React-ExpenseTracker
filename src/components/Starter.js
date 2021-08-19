@@ -1,18 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 
 //STYLING IMPORTS
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button} from 'react-bootstrap'
 import '../App.css'
 
 function Starter() {
 
-    let {transactions} = useContext(GlobalContext);
+    let {transactions, addTransaction} = useContext(GlobalContext);
+    let [newDesc, setDesc] = useState("");
+    let [newAmount, setAmount] = useState(0);
 
-    //handlaAddition Function using in Form
-
+    //handleAddition Function using in Form
+    const handleAddition=(event)=>{
+        event.preventDefault();
+        console.log(newDesc, newAmount);
+        addTransaction({
+            amount: newAmount,
+            desc: newDesc
+        })
+    }
     return (
         <div className='container'>
             <h2 className='pt-3'> Expense Tracker App </h2>
@@ -52,7 +60,7 @@ function Starter() {
 
             <div id = 'transaction'>
             <h3>Add New Transaction</h3>
-            <form>
+            <form onSubmit={handleAddition}>
                 <div className = 'form-control padding-left'>
                     <label htmlFor = 'description'>
                         Description
@@ -60,6 +68,7 @@ function Starter() {
                                 id= 'description'
                                 placeholder = 'Add Details'
                                 required
+                                onChange={(ev)=>setDesc(ev.target.value)}
                         />
                     </label>
                 </div>
@@ -70,13 +79,14 @@ function Starter() {
                                 id= 'addAmount'
                                 placeholder = 'Add Amount'
                                 required
+                                onChange={(ev)=>setAmount(ev.target.value)}
                         />
                     </label>
-                </div>
 
-                <Button className = 'btn'>
-                    Add Transacrion
-                </Button>
+                    <input type="submit" 
+                            value= "Add Transaction"
+                            className="btn btn-primary"></input>
+                </div>
 
             </form>
         </div>
