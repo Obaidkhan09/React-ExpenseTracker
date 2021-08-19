@@ -16,42 +16,67 @@ function Starter() {
     const handleAddition=(event)=>{
         event.preventDefault();
         console.log(newDesc, newAmount);
+
         addTransaction({
-            amount: newAmount,
+            amount: Number(newAmount),
             desc: newDesc
-        })
+        });
+
+        setDesc("");
+        setAmount(0);
     }
+
+    const getIncome = ()=>{
+        let income=0;
+        for(var i =0; i< transactions.length; i++){
+            if(transactions[i].amount>0)
+                income += transactions[i].amount;
+        }
+        return income;
+    }
+
+    const getExpense=()=>{
+        let expense=0;
+        for (var i=0; i< transactions.length; i++){
+            if(transactions[i].amount<0)
+                expense += transactions[i].amount;
+        }
+        return expense;
+    }
+
     return (
         <div className='container'>
             <h2 className='pt-3'> Expense Tracker App </h2>
 
 
             <h3>Current Balance</h3>
-            <h2>0.00</h2>
+            <h2>${getIncome() + getExpense()}</h2>
 
             <div className="inc-exp-container shadow p-3 mb-5 bg-white rounded">
                 <div>
                     <h4>Income</h4>
                     <p className='money plus' >
-                        $0.00
+                        ${getIncome()}
                     </p>
                 </div>
                 <div>
                     <h4>Expense</h4>
                     <p className='money minus'>
-                        $0.00
+                        ${getExpense()}
                     </p>
                 </div>
             </div>
 
             
             <h3>Transaction History</h3>
-            <ul  className = 'list'>
+            <ul  className = 'list money'>
                 {transactions.map((transObj, ind)=>{
                     return(
-                        <li key = {ind}>
-                            <span>{transObj.description}</span>
-                            <span>{transObj.amount}</span>
+                        <li key = {ind} className={transObj.amount >0?
+                            "plus rounded border border-primary" :
+                            "minus rounded border border-danger"}>
+                            <span>{transObj.desc}</span>
+                            <span>${transObj.amount}</span>
                         </li>
                     )
                 })}
@@ -69,6 +94,7 @@ function Starter() {
                                 placeholder = 'Add Details'
                                 required
                                 onChange={(ev)=>setDesc(ev.target.value)}
+                                value={newDesc}
                         />
                     </label>
                 </div>
@@ -80,6 +106,7 @@ function Starter() {
                                 placeholder = 'Add Amount'
                                 required
                                 onChange={(ev)=>setAmount(ev.target.value)}
+                                value={newAmount}
                         />
                     </label>
 
