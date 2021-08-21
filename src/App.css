@@ -179,7 +179,7 @@ input[type='number'] {
 
 .list li.plus:hover .delete-btn {
   opacity: 1;
-  color:  rgba(0, 64, 255, 0.918);
+  color:  red;
 }
 
 .list li.minus:hover .delete-btn {

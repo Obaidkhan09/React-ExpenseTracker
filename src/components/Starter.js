@@ -8,9 +8,10 @@ import '../App.css'
 
 function Starter() {
 
-    let {transactions, addTransaction} = useContext(GlobalContext);
+    let {transactions, addTransaction, deleteTransactions} = useContext(GlobalContext);
     let [newDesc, setDesc] = useState("");
-    let [newAmount, setAmount] = useState(0);
+    let [newAmount, setAmount] = useState("");
+    // let [getIndex, setIndex] = useState("");
 
     //handleAddition Function using in Form
     const handleAddition=(event)=>{
@@ -23,7 +24,12 @@ function Starter() {
         });
 
         setDesc("");
-        setAmount(0);
+        setAmount("");
+    }
+
+    const handleDeleteion=(num)=>{
+        deleteTransactions(num);
+
     }
 
     const getIncome = ()=>{
@@ -77,6 +83,9 @@ function Starter() {
                             "minus rounded border border-danger"}>
                             <span>{transObj.desc}</span>
                             <span>${transObj.amount}</span>
+                            <button className='delete-btn'
+                                    onClick={()=>{handleDeleteion(ind);}}
+                                    value={ind}>x</button>
                         </li>
                     )
                 })}
